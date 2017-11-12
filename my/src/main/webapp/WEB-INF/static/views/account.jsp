@@ -12,16 +12,13 @@
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../js/lib/jquery.ajaxfileupload.js"></script>
-<script type="text/javascript" src="../js/lib/handlebars-1.0.0.beta.6.js"></script>
+<script src="static/js/lib/jquery.ajaxfileupload.js"></script>
+<script type="text/javascript" src="static/js/lib/handlebars-1.0.0.beta.6.js"></script>
 <body>
 <div class="container">
     <div class="row" id="headerContainer"></div>
-    <div class="row">
-        <div class="col-md-9" id="left">
-        </div>
-        <div class="col-md-3" id="right">.col-md-4</div>
+
+    <div class="row" id="rowContent" >
     </div>
     <div class="row" id="foot" style="height: 100px">
 
@@ -29,15 +26,12 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-
-        
         var d = new Date();
         var t = d.getTime();
-        $('#headerContainer').load('/my/head?t='+t);
-        //$('#headerContainer').load('head.html?t='+t);
-        $('#left').load('postcontent1.html?t='+t);
-       // $('#left').load('showcontent.html');
-        $('#right').load('right.html?t='+t);
+        
+        $('#headerContainer').load('head?t='+t);
+        $('#rowContent').load('static/views/account/accountset.html?t='+t);
+
     });
 </script>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
