@@ -74,7 +74,14 @@
             color: #666;
             font-size: 14px;
             line-height: 20px;
+                }
+        #topRightList a{
+            color: #666;
+            font-size: 14px;
+            line-height: 20px;
+            padding-top: 5px;
         }
+
 
         #content {
             position: relative;
@@ -117,66 +124,43 @@
     <div id="header">
         <img id="headerlogo" src="static/images/img/t.PNG"  />
         <p>南京</p>
-    12 request:${requestScope.loginFlag}
         <div class="nav" >
             <ul class="clearfix">
-                <li><a href="/" title="首页" class="active s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'ownhome'])">首页</a></li>
+                <li><a href="/my/home" title="首页" class="active s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'ownhome'])">首页</a></li>
                 <li><a href="http://www.ziroomapartment.com/" title="自如寓" class="s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'apart'])">自如寓</a></li>
 
                 <li><a href="http://www.ziroom.com/zhuanti/minsu/index.html" title="民宿" class="s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'minsu'])">民宿</a>
                 </li>
                 <li><a href="/ziroomer/" title="生活" class="s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'life'])">生活</a></li>
 
-      <div class="btn-group">
-        <li  class=" dropdown-toggle" 
-                data-toggle="dropdown">
-            <a href="#">默认 <span class="caret"></span>
-        </li>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">功能</a></li>
-            <li><a href="#">另一个功能</a></li>
-            <li><a href="#">其他</a></li>
-            <li class="divider"></li>
-            <li><a href="#">分离的链接</a></li>
-        </ul>
+            </ul>
         </div>
+            
+        <ul class="fr" id="topRightList" class="clearfix">
+            <c:choose>
+                <c:when test="${requestScope.loginFlag== 'true'}">  
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         我的账号 
+                        <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/my/account?p=accountset">账号设置</a></li>
+                            <li><a href="/my/account?p=publish">发布内容</a></li>
+                            <li><a href="/my/account?p=message">接收消息</a></li>
+                        </ul>
+                    </li>
 
-
-                </ul>
-                  </div>
-            <ul class="fr" id="topRightList" class="clearfix">
-          
-
-                <c:choose>
-                    <c:when test="${requestScope.loginFlag== 'true'}">  
-                    
-                          <li class="app">
-                    <a rel="nofollow" target="_blank" href="http://zhuanti.ziroom.com/zhuanti/app/index.html"><b></b>个人信息</a>
-                   <!--  
-                    <div class="box">
-                        <p>我的发布</p>
-                        <p>账号设置</p>
-                         background-image: url(img/WALL.PNG);
-                    </div>
-                    -->
-                </li>
-                    
-                        <li id="ziroom_login" style="opacity: 1;"><a href="addroom">免费发布</a></li>  
-                    </c:when>
+                    <li id="ziroom_login" style="opacity: 1;"><a href="addroom">免费发布</a></li>  
+                </c:when>
      
   
-                    <c:otherwise> 
+            <c:otherwise> 
                         <li id="ziroom_login" style="opacity: 1;"><a href="static/views/loginm.html" rel="nofollow">登录</a></li>
                         <li id="ziroom_reg" style="opacity: 1;"><a href="static/views/registerm.html" rel="nofollow">注册</a></li>
                     
-                 
-                    </c:otherwise>
-                </c:choose>
-                         
-                
-
-            </ul>
-
-
+            </c:otherwise>
+            </c:choose>
+        </ul>
 
 </div>

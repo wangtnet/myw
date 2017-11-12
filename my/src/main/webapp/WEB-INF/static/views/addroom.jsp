@@ -42,9 +42,9 @@
         var d = new Date();
         var t = d.getTime();
         $('#headerContainer').load('head?t='+t);
-        $('#left').load('static/views/postcontent1.html?t='+t);
+        $('#left').load('static/views/addroom/postcontent1.html?t='+t);
        // $('#left').load('showcontent.html');
-        $('#right').load('static/views/addright.html?t='+t);
+        $('#right').load('static/views/addroom/addright.html?t='+t);
     });
 </script>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>

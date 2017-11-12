@@ -33,7 +33,7 @@
         var t = d.getTime();
         $('#headerContainer').load('head?t='+t);
         $('#rowSearch').load('static/views/search.html?t='+t);
-        $('#rowContent').load('static/views/li.html?t='+t);
+        $('#rowContent').load('static/views/home/li.html?t='+t);
        // $('#left').load('showcontent.html');
         $('#right').load('static/views/right.html?t='+t);
     });
