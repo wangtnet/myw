@@ -1,0 +1,198 @@
+<html>
+
+<head>
+    <style type="text/css">
+        #selection
+        {
+           position: relative; 
+           border-radius: 5px; 
+           padding: 1px; 
+           background: #ccc; 
+       }
+       #selection .selection_con {
+        background: #fff;
+        border-radius: 5px;
+        position: relative;
+        /*min-height: 106px;*/
+        padding: 10px 15px 5px 15px;
+        position: relative;
+        font-size: 14px;
+    }
+    #selection .selection_con dl {
+        line-height: 20px;
+        padding: 0 0 7px 0;
+        border-bottom: dotted 1px #ccc;
+        position: relative;
+
+    }
+
+    .clearfix {
+        display: block;
+
+    }
+    .clearfix:after {
+        display: block;
+        visibility: hidden;
+        clear: both;
+        height: 0;
+        content: ".";
+    }
+    #selection .selection_con dl dd a.active2 {
+        line-height: 20px;
+        color: #fff;
+        background: #ffa000;
+        border-radius: 5px;
+
+    }
+    #selection .selection_con dl dd a {
+        display: block;
+        float: left;
+        padding: 0 5px;
+        margin-right: 13px;
+        float: left;
+
+        position: relative;
+        z-index: 2;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+    #selection .selection_con span.pricebetween input, #selection .selection_con span.pricebetween i {
+        float: left;
+        height: 20px;
+
+        line-height: 20px;
+        display: inline;
+        margin: 0px 2px;
+        color: #666;
+    }
+    #selection .selection_con span .textipt {
+        border: solid 1px #ccc;
+        width: 56px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 12px;
+        position: relative;
+        border-radius: 5px;
+        text-align: center;
+    }
+    #selection .selection_con span.pricebetween .posi3 {
+        background: #ffa000;
+        width: 40px;
+        line-height: 20px;
+        line-height: 20px;
+       
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+    button, input,  textarea {
+        font-size: 70%;
+        margin: 0;
+        vertical-align: middle;
+        text-align:center;
+        padding:0px;
+        border: 1px;
+    }
+    #selection  ul li a,checkbox {
+        background-position: -150px -160px;
+        padding-left: 25px;
+        height: 20px;
+        line-height: 20px;
+        margin: 0;
+    }
+      #selection dd li select{
+        height: 20px;
+        line-height: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        vertical-align: middle;
+        text-align:center;
+        border-radius: 3px;
+    }
+    li {list-style-type:none;
+    float: left;
+     margin-right: 15px;}
+</style>
+</head>
+
+<body>
+    <div class="selectpan" id="selection" style="margin-top: 10px;">
+        <div class="selection_con">
+        <dl class="clearfix zIndex3">
+                <dt style="float:left padding-top: 1px;width:15%;display:inline;">关键字：</dt>
+                <dd style="float:right;display:inline;padding-top: 1px; width: 85%">
+                    <div class="clearfix t">
+                        <span class="pricebetween">
+                            <input id="search" style="width: 250px;height: 25px;    text-align: left;" class="textipt posi1" value="" type="text">
+                            <input style="width: 40px;height: 25px;" class="buttipt posi3" name="" type="button" onclick="url_date11();" value="搜索"> 
+                            <input style="margin-left:100px;  width: 110px;height: 25px; background: url(static/images/img/point.png) no-repeat 0 0;padding-left: 30px;border: 1px;" class="buttipt posi3" name="" type="button" onclick="url_date11();" value="进入地图找房"> 
+                        </span>
+                    </div>   
+                </dd>
+            </dl>
+            <dl class="clearfix zIndex3">
+                <dt style="float:left padding-top: 1px;width:15%;display:inline;">居室：</dt>
+                <dd style="float:right;display:inline;padding-top: 1px; width: 85%">
+                    <div class="clearfix t">
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902.html" class="active2">不限</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u1.html">1居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u2.html">2居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u3.html">3居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u4.html">4居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u5.html">4居以上</a>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="clearfix zIndex3">
+                <dt style="float:left padding-top: 1px;width:15%;display:inline;">居室：</dt>
+                <dd style="float:right;display:inline;padding-top: 1px; width: 85%">
+                    <div class="clearfix t">
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902.html" class="active2">不限</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u1.html">1居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u2.html">2居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u3.html">3居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u4.html">4居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u5.html">4居以上</a>
+                        <span class="pricebetween">
+                            <input id="pricedown" class="textipt posi1" value="" type="text"><i class="posi4">-</i>
+                            <input id="priceup" class="textipt posi2" value="" type="text"><i class="posi5">元</i>
+                            <input class="buttipt posi3" name="" type="button" onclick="url_date11();" value="确定"> 
+
+                        </span>
+                    </div>
+                </dd>
+            </dl>
+
+
+            <dl class="clearfix zIndex3">
+                <dt style="float:left padding-top: 1px;width:15%;display:inline;">居室：</dt>
+                <dd style="float:right;display:inline;padding-top: 1px; width: 85%">
+                    <div class="clearfix t">
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902.html" class="active2">不限</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u1.html">1居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u2.html">2居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u3.html">3居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u4.html">4居</a>
+                        <a href="//sz.ziroom.com/z/nl/z2-d23008679-b611100902-u5.html">4居以上</a>
+
+                        <li> <input name="Fruit" type="checkbox" value="Friut" />独立阳台</li>
+                        <li><select>
+                          <option value="volvo">朝向</option>
+                          <option value="saab">朝南</option>
+                          <option value="opel">朝北</option>
+                          <option value="audi">朝东</option>
+                      </select></li>
+                  </div>
+              </dd>
+          </dl>
+
+      </div>
+  </div>
+
+</body>
+
+
+</html>

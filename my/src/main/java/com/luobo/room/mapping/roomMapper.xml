@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luobo.room.dao.roomMapper" >
+  <resultMap id="BaseResultMap" type="com.luobo.room.pojo.room" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="liid" property="liid" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="BIGINT" />
+    <result column="areaname" property="areaname" jdbcType="VARCHAR" />
+    <result column="courtname" property="courtname" jdbcType="VARCHAR" />
+    <result column="subway" property="subway" jdbcType="VARCHAR" />
+    <result column="surroundinginfo" property="surroundinginfo" jdbcType="VARCHAR" />
+    <result column="trafficinfo" property="trafficinfo" jdbcType="VARCHAR" />
+    <result column="WIFI" property="wifi" jdbcType="BIT" />
+    <result column="aircondtioner" property="aircondtioner" jdbcType="BIT" />
+    <result column="washer" property="washer" jdbcType="BIT" />
+    <result column="fridges" property="fridges" jdbcType="BIT" />
+    <result column="hotwater" property="hotwater" jdbcType="BIT" />
+    <result column="kitchen" property="kitchen" jdbcType="BIT" />
+    <result column="balcony" property="balcony" jdbcType="BIT" />
+    <result column="acreage" property="acreage" jdbcType="REAL" />
+    <result column="orientation" property="orientation" jdbcType="TINYINT" />
+    <result column="floor" property="floor" jdbcType="TINYINT" />
+    <result column="roominfo" property="roominfo" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="BIT" />
+    <result column="image1" property="image1" jdbcType="VARCHAR" />
+    <result column="imageinfo1" property="imageinfo1" jdbcType="VARCHAR" />
+    <result column="image2" property="image2" jdbcType="VARCHAR" />
+    <result column="imageinfo2" property="imageinfo2" jdbcType="VARCHAR" />
+    <result column="image3" property="image3" jdbcType="VARCHAR" />
+    <result column="imageinfo3" property="imageinfo3" jdbcType="VARCHAR" />
+    <result column="image4" property="image4" jdbcType="VARCHAR" />
+    <result column="imageinfo4" property="imageinfo4" jdbcType="VARCHAR" />
+    <result column="image5" property="image5" jdbcType="VARCHAR" />
+    <result column="imageinfo5" property="imageinfo5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, liid, userid, areaname, courtname, subway, surroundinginfo, trafficinfo, WIFI, 
+    aircondtioner, washer, fridges, hotwater, kitchen, balcony, acreage, orientation, 
+    floor, roominfo, state, image1, imageinfo1, image2, imageinfo2, image3, imageinfo3, 
+    image4, imageinfo4, image5, imageinfo5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAllRooms" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+  </select>
+   <select id="selectByLiid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where liid = #{liid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from room
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.luobo.room.pojo.room" >
+    insert into room (id, liid, userid, 
+      areaname, courtname, subway, 
+      surroundinginfo, trafficinfo, WIFI, 
+      aircondtioner, washer, fridges, 
+      hotwater, kitchen, balcony, acreage, 
+      orientation, floor, roominfo, 
+      state, image1, imageinfo1, 
+      image2, imageinfo2, image3, 
+      imageinfo3, image4, imageinfo4, 
+      image5, imageinfo5)
+    values (#{id,jdbcType=BIGINT}, #{liid,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT}, 
+      #{areaname,jdbcType=VARCHAR}, #{courtname,jdbcType=VARCHAR}, #{subway,jdbcType=VARCHAR}, 
+      #{surroundinginfo,jdbcType=VARCHAR}, #{trafficinfo,jdbcType=VARCHAR}, #{wifi,jdbcType=BIT}, 
+      #{aircondtioner,jdbcType=BIT}, #{washer,jdbcType=BIT}, #{fridges,jdbcType=BIT}, 
+      #{hotwater,jdbcType=BIT}, #{kitchen,jdbcType=BIT}, #{balcony,jdbcType=BIT}, #{acreage,jdbcType=REAL}, 
+      #{orientation,jdbcType=TINYINT}, #{floor,jdbcType=TINYINT}, #{roominfo,jdbcType=VARCHAR}, 
+      #{state,jdbcType=BIT}, #{image1,jdbcType=VARCHAR}, #{imageinfo1,jdbcType=VARCHAR}, 
+      #{image2,jdbcType=VARCHAR}, #{imageinfo2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{imageinfo3,jdbcType=VARCHAR}, #{image4,jdbcType=VARCHAR}, #{imageinfo4,jdbcType=VARCHAR}, 
+      #{image5,jdbcType=VARCHAR}, #{imageinfo5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.luobo.room.pojo.room" >
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="liid != null" >
+        liid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="areaname != null" >
+        areaname,
+      </if>
+      <if test="courtname != null" >
+        courtname,
+      </if>
+      <if test="subway != null" >
+        subway,
+      </if>
+      <if test="surroundinginfo != null" >
+        surroundinginfo,
+      </if>
+      <if test="trafficinfo != null" >
+        trafficinfo,
+      </if>
+      <if test="wifi != null" >
+        WIFI,
+      </if>
+      <if test="aircondtioner != null" >
+        aircondtioner,
+      </if>
+      <if test="washer != null" >
+        washer,
+      </if>
+      <if test="fridges != null" >
+        fridges,
+      </if>
+      <if test="hotwater != null" >
+        hotwater,
+      </if>
+      <if test="kitchen != null" >
+        kitchen,
+      </if>
+      <if test="balcony != null" >
+        balcony,
+      </if>
+      <if test="acreage != null" >
+        acreage,
+      </if>
+      <if test="orientation != null" >
+        orientation,
+      </if>
+      <if test="floor != null" >
+        floor,
+      </if>
+      <if test="roominfo != null" >
+        roominfo,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="image1 != null" >
+        image1,
+      </if>
+      <if test="imageinfo1 != null" >
+        imageinfo1,
+      </if>
+      <if test="image2 != null" >
+        image2,
+      </if>
+      <if test="imageinfo2 != null" >
+        imageinfo2,
+      </if>
+      <if test="image3 != null" >
+        image3,
+      </if>
+      <if test="imageinfo3 != null" >
+        imageinfo3,
+      </if>
+      <if test="image4 != null" >
+        image4,
+      </if>
+      <if test="imageinfo4 != null" >
+        imageinfo4,
+      </if>
+      <if test="image5 != null" >
+        image5,
+      </if>
+      <if test="imageinfo5 != null" >
+        imageinfo5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="liid != null" >
+        #{liid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="areaname != null" >
+        #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="courtname != null" >
+        #{courtname,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="surroundinginfo != null" >
+        #{surroundinginfo,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficinfo != null" >
+        #{trafficinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="wifi != null" >
+        #{wifi,jdbcType=BIT},
+      </if>
+      <if test="aircondtioner != null" >
+        #{aircondtioner,jdbcType=BIT},
+      </if>
+      <if test="washer != null" >
+        #{washer,jdbcType=BIT},
+      </if>
+      <if test="fridges != null" >
+        #{fridges,jdbcType=BIT},
+      </if>
+      <if test="hotwater != null" >
+        #{hotwater,jdbcType=BIT},
+      </if>
+      <if test="kitchen != null" >
+        #{kitchen,jdbcType=BIT},
+      </if>
+      <if test="balcony != null" >
+        #{balcony,jdbcType=BIT},
+      </if>
+      <if test="acreage != null" >
+        #{acreage,jdbcType=REAL},
+      </if>
+      <if test="orientation != null" >
+        #{orientation,jdbcType=TINYINT},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=TINYINT},
+      </if>
+      <if test="roominfo != null" >
+        #{roominfo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="image1 != null" >
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo1 != null" >
+        #{imageinfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null" >
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo2 != null" >
+        #{imageinfo2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null" >
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo3 != null" >
+        #{imageinfo3,jdbcType=VARCHAR},
+      </if>
+      <if test="image4 != null" >
+        #{image4,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo4 != null" >
+        #{imageinfo4,jdbcType=VARCHAR},
+      </if>
+      <if test="image5 != null" >
+        #{image5,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo5 != null" >
+        #{imageinfo5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luobo.room.pojo.room" >
+    update room
+    <set >
+      <if test="liid != null" >
+        liid = #{liid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="areaname != null" >
+        areaname = #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="courtname != null" >
+        courtname = #{courtname,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        subway = #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="surroundinginfo != null" >
+        surroundinginfo = #{surroundinginfo,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficinfo != null" >
+        trafficinfo = #{trafficinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="wifi != null" >
+        WIFI = #{wifi,jdbcType=BIT},
+      </if>
+      <if test="aircondtioner != null" >
+        aircondtioner = #{aircondtioner,jdbcType=BIT},
+      </if>
+      <if test="washer != null" >
+        washer = #{washer,jdbcType=BIT},
+      </if>
+      <if test="fridges != null" >
+        fridges = #{fridges,jdbcType=BIT},
+      </if>
+      <if test="hotwater != null" >
+        hotwater = #{hotwater,jdbcType=BIT},
+      </if>
+      <if test="kitchen != null" >
+        kitchen = #{kitchen,jdbcType=BIT},
+      </if>
+      <if test="balcony != null" >
+        balcony = #{balcony,jdbcType=BIT},
+      </if>
+      <if test="acreage != null" >
+        acreage = #{acreage,jdbcType=REAL},
+      </if>
+      <if test="orientation != null" >
+        orientation = #{orientation,jdbcType=TINYINT},
+      </if>
+      <if test="floor != null" >
+        floor = #{floor,jdbcType=TINYINT},
+      </if>
+      <if test="roominfo != null" >
+        roominfo = #{roominfo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="image1 != null" >
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo1 != null" >
+        imageinfo1 = #{imageinfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null" >
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo2 != null" >
+        imageinfo2 = #{imageinfo2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null" >
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo3 != null" >
+        imageinfo3 = #{imageinfo3,jdbcType=VARCHAR},
+      </if>
+      <if test="image4 != null" >
+        image4 = #{image4,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo4 != null" >
+        imageinfo4 = #{imageinfo4,jdbcType=VARCHAR},
+      </if>
+      <if test="image5 != null" >
+        image5 = #{image5,jdbcType=VARCHAR},
+      </if>
+      <if test="imageinfo5 != null" >
+        imageinfo5 = #{imageinfo5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luobo.room.pojo.room" >
+    update room
+    set liid = #{liid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=BIGINT},
+      areaname = #{areaname,jdbcType=VARCHAR},
+      courtname = #{courtname,jdbcType=VARCHAR},
+      subway = #{subway,jdbcType=VARCHAR},
+      surroundinginfo = #{surroundinginfo,jdbcType=VARCHAR},
+      trafficinfo = #{trafficinfo,jdbcType=VARCHAR},
+      WIFI = #{wifi,jdbcType=BIT},
+      aircondtioner = #{aircondtioner,jdbcType=BIT},
+      washer = #{washer,jdbcType=BIT},
+      fridges = #{fridges,jdbcType=BIT},
+      hotwater = #{hotwater,jdbcType=BIT},
+      kitchen = #{kitchen,jdbcType=BIT},
+      balcony = #{balcony,jdbcType=BIT},
+      acreage = #{acreage,jdbcType=REAL},
+      orientation = #{orientation,jdbcType=TINYINT},
+      floor = #{floor,jdbcType=TINYINT},
+      roominfo = #{roominfo,jdbcType=VARCHAR},
+      state = #{state,jdbcType=BIT},
+      image1 = #{image1,jdbcType=VARCHAR},
+      imageinfo1 = #{imageinfo1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      imageinfo2 = #{imageinfo2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      imageinfo3 = #{imageinfo3,jdbcType=VARCHAR},
+      image4 = #{image4,jdbcType=VARCHAR},
+      imageinfo4 = #{imageinfo4,jdbcType=VARCHAR},
+      image5 = #{image5,jdbcType=VARCHAR},
+      imageinfo5 = #{imageinfo5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

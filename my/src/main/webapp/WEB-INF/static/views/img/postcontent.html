@@ -1,0 +1,87 @@
+<style>
+    .postrow{
+        padding: 5px 20px;
+        background-color: #f5f5f5;
+        overflow: hidden;
+        _width: 760px;
+        font-size: 14px;
+    }
+    h2{
+        font-size: 18px;
+        background: #fff;
+        padding-right: 20px;
+        position: relative;
+        padding-left: 15px;
+        margin-top: 10px;
+        padding: 5px;
+        z-index: 2;
+        border-top: 1px solid #EEE;
+    }
+    .hcenter{
+        margin-top: 70px;
+    }
+</style>
+<div style="margin-top: 10px;">
+   
+    <h2>位置信息</h2>
+
+    <form action="" id="postForm">
+        <div class="block_wrap">
+            <div class="block_title">
+                <h2>类别和身份</h2>
+            </div>
+            <div class="block_content">
+                <div class="rows_wrap clearfix">
+                    <div class="rows_content">
+                        <div class="tip" style="display: none;">  
+                        </div>
+                        <div class="radio_wrap clearfix success" name="HireType"><div tabindex="1" class="radio" data-value="2"><i></i><label>整套出租</label></div><div tabindex="1" class="radio hover focus" data-value="0"><i></i><label>单间出租</label></div></div></div><div class="rows_title"><span><span class="rows_title_star">*</span>出租方式</span></div></div><div class="rows_wrap clearfix"><div class="rows_content"><div class="tip" style="display: none;"></div><div class="radio_wrap clearfix success" name="isBiz"><div tabindex="2" class="radio focus" data-value="0"><i></i><label>个人转让</label></div><div tabindex="2" class="radio" data-value="1"><i></i><label>商家转让</label></div></div></div><div class="rows_title"><span><span class="rows_title_star">*</span>身份</span></div></div></div></div>
+    </form>
+    <div class="form-group">
+            <div class="col-sm-offset-6 col-sm-6">
+                <button type="submit" class="btn btn-default">保存改动</button>
+            </div>
+    </div>
+</div>
+
+
+
+<script>
+/*
+    debugger;
+    $(":submit").click(function(){
+        alert("hello");
+
+        var areaname =$("#areaname").val();
+        var courtname =$("#courtname").val();
+        var surroundinginfo =$("#surroundinginfo").val();
+        var traffic//info =$("#trafficinfo").val();
+    
+
+        var form = new FormData();
+        form.append("areaname",areaname);
+        form.append("courtname",courtname);
+        form.append("surroundinginfo",surroundinginfo);
+        form.append("id",1);
+　      $.ajax({
+                url:"/my/room",
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    window.clearInterval(timer);
+                    console.log("over..");
+                }
+            });
+
+        alert(areaname);
+
+        debugger;
+        return false;
+    });
+
+    $('#one-specific-file').ajaxfileupload({
+        action: '/my/user/upload"'
+    });
+</script>

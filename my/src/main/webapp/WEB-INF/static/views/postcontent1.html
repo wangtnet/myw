@@ -1,0 +1,512 @@
+<style>
+
+    .WB_cardwrap {
+        margin: 0 0 10px 0;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        border-radius: 2px;
+    }
+
+    .postrow{
+        padding: 15px 20px;
+       background-color: #f5f5f5;
+        overflow: hidden;
+        _width: 760px;
+        font-size: 14px;
+    }
+    h2{
+        font-size: 18px;
+        background: #fff;
+
+        padding-right: 20px;
+        position: relative;
+        padding-left: 15px;
+        margin-top: 10px;
+        padding: 5px;
+        padding-top:10px;
+        z-index: 2;
+        border-top: 1px solid #EEE;
+    }
+    .hcenter{
+        margin-top: 70px;
+    }
+
+    .roomImage{
+        background-image: url(http://pic.ziroom.com/house_images/g2/M00/30/27/v800x600_ChAFfVlWVNCAaqhxAAgICMCQd3o687.JPG);
+        background-size:100% 100%;
+        width: 400px;
+        height: 250px; 
+        padding-top: 170px;
+        padding-left:80px;
+        background-repeat: no-repeat;
+    }
+
+    li { list-style-type:none; }
+</style>
+<div style="margin-top: 10px;">
+    
+    <div class="WB_cardwrap">
+    <h2 style="border-top: 0px">位置信息</h2>
+    <form class="form-horizontal postrow" >
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">区域</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" style="display: none" id="liid" value="">
+                <input type="text" class="form-control" id="areaname" placeholder="区域">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">小区</label>
+
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="courtname" placeholder="小区名字">
+            </div>
+
+        </div>
+        <div class="form-group" id="subway">
+            <label for="name" class="col-sm-3 control-label">地铁</label>
+            <div class="col-sm-7">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckbox1" value="option1"> 1
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckbox2" value="option2"> 2
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckbox3" value="option3"> 3
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckbox4" value="option1"> 4
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckbox6" value="option2"> 6
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="subwayCheckboxS1" value="option3"> S1
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">周边信息</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" id="surroundinginfo" rows="2"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">交通信息</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" rows="2" id="trafficinfo"></textarea>
+            </div>
+        </div>
+        <!--
+        <div class="form-group">
+            <div class="col-sm-offset-7 col-sm-3">
+                <button type="submit" class="btn btn-default">保存改动</button>
+            </div>
+        </div>
+        -->
+    </form>
+    </div>
+
+    <div class="WB_cardwrap">
+    <h2>房间信息</h2>
+    <form class="form-horizontal postrow">
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">设施</label>
+            <div class="col-sm-7">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="aircondtioner" > 空调
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="washer" > 洗衣机
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="wifi" > WIFI
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="kitchen" > 厨房
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="balcony" > 独卫
+                </label>
+
+            </div>
+            <div class="col-sm-offset-3 col-sm-7">
+
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="fridges" > 冰箱
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" > 热水器
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" > 阳台
+                </label>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">面积</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="acreage" placeholder="面积">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">朝向</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="orientation" placeholder="朝向">
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">装修情况</label>
+            <div class="col-sm-7">
+                <select  type="text" class="form-control" id="zhuangxiu" placeholder="装修情况">
+                     <option>毛坯</option>
+                     <option>简装</option>
+                     <option>精装</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">楼层</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="floor" placeholder="总楼层">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="floor" placeholder="所在楼层">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">户型</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="floor" placeholder="室个数">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="floor" placeholder="厅个数">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="floor" placeholder="卫个数">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">房间信息描述</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" rows="2" id="roominfo"></textarea>
+            </div>
+        </div>
+        <!--
+        <div class="form-group">
+            <div class="col-sm-offset-7 col-sm-3">
+                <button type="submit" class="btn btn-default">保存改动</button>
+            </div>
+        </div>
+        -->
+    </form>
+    </div>
+
+    <div class="WB_cardwrap">
+    <h2>综合</h2>
+    <form class="form-horizontal postrow">
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">状态</label>
+
+        <div class="col-sm-7">
+            <label class="radio-inline  col-sm-3 ">
+                <input type="radio" id="inlineRadiobox1" name="rentstatus" value="1"> 已租
+            </label>
+            <label class="radio-inline col-sm-3 ">
+                <input type="radio" id="inlineRadiobox2" name="rentstatus" value="2"> 未租
+            </label>
+        </div>
+        </div>
+         <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">出租方式</label>
+
+        <div class="col-sm-7">
+            <label class="radio-inline col-sm-3 ">
+                <input type="radio" id="inlineRadiobox1" name="rentmethod" value="1"> 整租
+            </label>
+            <label class="radio-inline col-sm-3 ">
+                <input type="radio" id="inlineRadiobox2" name="rentmethod" value="2"> 单间
+            </label>
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">身份</label>
+
+        <div class="col-sm-7">
+            <label class="radio-inline col-sm-3 ">
+                <input type="radio" id="inlineRadiobox1" name="owertype" value="1"> 个人
+            </label>
+            <label class="radio-inline col-sm-3 ">
+                <input type="radio" id="inlineRadiobox2" name="owertype" value="2"> 商家
+            </label>
+        </div> </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">联系方式</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="areaname" placeholder="手机号">
+            </div>
+        </div>
+       
+    </form>
+    </div>
+
+
+
+    <!--
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-4">
+                <img src="http://pic.ziroom.com/house_images/g2/M00/30/27/v800x600_ChAFfVlWVNCAaqhxAAgICMCQd3o687.JPG"
+                     class="img-responsive" alt="Responsive image center-block form-control">
+            </div>
+        </div>
+    -->
+   
+
+    <!--
+    <label for="inputPassword" class="col-sm-3 control-label">厨房</label>
+    <div class="col-sm-7">
+        <div id="picid" class="form-control" style="background-image: url(http://pic.ziroom.com/house_images/g2/M00/48/76/v800x600_ChAFfVl-o8eADmKbACB6uktqpNM240.JPG);background-size:contain;width: 400px;height: 250px; padding-top: 170px;padding-left:80px;">
+    
+            <button type="button" id="delete" class=" btn-small" >
+                <li>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="glyphicon-class">删除</span>
+                </li>
+            </button>
+            <button type="button" id="edit" class="  btn-small" data-toggle="modal" data-target="#myModal">
+                <li>
+                    <span class="glyphicon glyphicon-pencil"  aria-hidden="true"></span>
+                    <span class="glyphicon-class">编辑</span>
+                </li>
+            </button>
+        </div>
+    </div>
+-->
+<!--
+    <h2>上传图片</h2> -->
+
+
+        <div class="form-group"  style="display: none">
+        <label for="inputPassword" class="col-sm-3 control-label"></label>
+            <div class=" col-sm-4" style="padding-top: 20px;padding-left: 10px;">
+                <link rel="stylesheet" href="http://mp.gtimg.cn/assetscom/theme/modern/common/ui/Button.css">
+                <label class="ui_button ui_button_primary" id="uploadclick" style="min-width: 200px" for="one-specific-file" style="margin-left: 15px;">上传文件</label>
+                <br>
+                <input type="file" id="one-specific-file" name="one-specific-file" style="position:absolute;clip:rect(0 0 0 0);">
+
+            </div>
+        </div>
+
+        
+  
+   
+ <div class="WB_cardwrap">
+    <h2>图片</h2>
+<div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img   style="margin: 0 auto;height: 500px" src="/my/static/v800x600_ChAFD1nof0iAdHYPAALgGzXRzpc975.JPG" data-holder-rendered="true">
+          
+        </div>
+        <div class="item">
+         <img  style="margin: 0 auto;height: 500px"  src="/my/static/v800x600_ChAFD1nof0KAWImUAAOY-JAeDXM522.JPG" data-holder-rendered="true">
+          <div class="carousel-caption">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="item">
+           <img  style="margin: 0 auto;height: 500px"  src="/my/static/v800x600_ChAFD1nof4OAYlbUAAJ1a85L7Rw275.JPG" data-holder-rendered="true">
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+ 
+</div>
+
+<div class="WB_cardwrapmap">
+<h2>地图</h2>
+<div>
+    <div  id="container" style="top:1660px;left:15px;padding-left:50px; width: 850px;height: 400px" ></div>
+</div>
+</div>
+
+</div>
+
+<!--
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+       <div class="form-group">
+          <label  class="col-sm-2 control-label">描述</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword" placeholder="描述">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script id="table-template" type="text/x-handlebars-template">
+     {{#each student}} 
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-3 control-label">{{title}}</label>
+            <div class="col-sm-7">
+                <div  class="form-control roomImage" id={{id}}>
+                    <button type="button"  class="btn-small" >
+                        <li>
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span class="glyphicon-class">删除</span>
+                        </li>
+                    </button>
+                    <button type="button"  class="  btn-small"  data-toggle="modal" data-target="#myModal">
+                        <li>
+                            <span class="glyphicon glyphicon-pencil"  aria-hidden="true"></span>
+                            <span class="glyphicon-class">编辑</span>
+                        </li>
+                    </button>
+                </div>
+            </div>
+        </div>
+     {{/each}}   
+    </script>
+    !-->
+<script>
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom:11,
+        center: [116.40, 39.91]
+    });
+    var roomid =$("#roomid").text();
+
+    debugger;
+    $(":submit").click(function(){
+        alert("hello");
+
+        var areaname =$("#areaname").val();
+        var courtname =$("#courtname").val();
+        var surroundinginfo =$("#surroundinginfo").val();
+        var traffic//info =$("#trafficinfo").val();
+    
+        alert($("#liid").val());
+        var form = new FormData();
+        form.append("areaname",areaname);
+        form.append("courtname",courtname);
+        form.append("surroundinginfo",surroundinginfo);
+        form.append("trafficinfo",$("#surroundinginfo").val());
+        form.append("subway",$("#subwayCheckbox1").val()+","+$("#subwayCheckbox2").val()+","+
+            $("#subwayCheckbox3").val()+","+$("#subwayCheckbox4").val()+","+
+            $("#subwayCheckbox6").val()+","+$("#subwayCheckboxs1").val());
+
+        form.append("liid",$("#liid").text());
+
+        var method = "put";
+        if($("#liid").text().trim()===""){
+            method ="post";
+        }
+
+　      $.ajax({
+                url:"/my/room",
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    console.log("over..");
+                    alert(data);
+                    $("#liid").text(data);
+                }
+            });
+
+        alert(areaname);
+
+        debugger;
+        return false;
+    });
+
+
+
+        function refreshImages(response){
+            var mypics=new Array()
+            var pic1=new Object();
+                
+            pic1.title="描述";
+            pic1.id="newid";
+
+            mypics[0]=pic1;
+    
+            //for (var d in data) {
+            //    data[d].url = "mbase.html?pd="+data[d].filmid;
+             //  };
+            var mdata =new Object();
+            mdata.student = mypics;
+            var myTemplate = Handlebars.compile($("#table-template").html());
+            $('#tableList').html(myTemplate(mdata));
+                                
+            $(".roomImage").mouseover(function (event)  
+            { 
+                $(".btn-small").show();
+            }); 
+              
+            $(".roomImage").mouseleave(function(){
+                $(".btn-small").hide();
+            });
+            
+
+
+           var imgurl="url(/my/static/"+response+")";
+            $("#newid").css("background",imgurl);
+            $("#newid").css("background-size","100% 100%");
+
+        }
+        var d = new Date();
+        var t = d.getTime();
+
+        $('#one-specific-file').ajaxfileupload({
+                action: '/my/room/upload?roomid='+roomid+'&t='+t,
+                onComplete: function(response){
+                            alert(response);
+                            refreshImages(response);
+                        }
+        });
+
+
+        function savePage(){
+            alert("savePage");
+            //$("#one-specific-file")
+            
+            
+        }
+
+        function addImage(){
+            alert("addImage");
+            $("#uploadclick").trigger("click");
+        }
+</script>

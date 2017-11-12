@@ -1,0 +1,198 @@
+<style>
+    .postrow{
+        padding: 5px 20px;
+        background-color: #f5f5f5;
+        overflow: hidden;
+        _width: 760px;
+        font-size: 14px;
+    }
+    h2{
+        font-size: 18px;
+        background: #fff;
+        padding-right: 20px;
+        position: relative;
+        padding-left: 15px;
+        margin-top: 10px;
+        padding: 5px;
+        z-index: 2;
+    }
+    h3{
+        font-size: 17px;
+        padding-right: 20px;
+        position: relative;
+        padding-left: 15px;
+        margin-top: 10px;
+        padding: 5px;
+        z-index: 2;
+    }
+    .detail_room {
+        padding: 0 25px;
+        background: #f5f5f5;
+        border-radius: 5px;
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 20px;
+        height: 160px;
+        position: relative;
+        z-index: 6;
+    }
+    .detail_room li {
+        line-height: 31px;
+        position: relative;
+        border-bottom: solid 1px #fff;
+        font-size: 14px;
+    }
+    .dview_icon_list li {
+        float: left;
+        margin-right: 33px;
+        text-align: center;
+    }
+</style>
+<script id="table-template" type="text/x-handlebars-template">
+    {{#each student}} 
+     <h2>[{{areaname}}] [{{courtname}}]</h2>
+<div >
+
+    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM3NzcKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWVkYjE1ZDQ1MCB0ZXh0IHsgZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZWRiMTVkNDUwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMzMy4yMTA5Mzc1IiB5PSIyNzAuMSI+OTAweDUwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+          <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#666:#666" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM2NjYKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWVkYjE1YWI3NyB0ZXh0IHsgZmlsbDojNjY2O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZWRiMTVhYjc3Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjMzMy4yMTA5Mzc1IiB5PSIyNzAuMSI+OTAweDUwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+          <div class="carousel-caption">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#555:#555" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiM1NTUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWVkYjE1ZjEwMSB0ZXh0IHsgZmlsbDojNTU1O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZWRiMTVmMTAxIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSIvPjxnPjx0ZXh0IHg9IjMzMy4yMTA5Mzc1IiB5PSIyNzAuMSI+OTAweDUwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+ 
+
+
+
+    <h2>租售信息</h2>
+    <div class="postrow">
+        <ul class="detail_room">
+            <li><b></b>面积： 19.3㎡   </li>
+            <!--<li><b></b>朝向： 南</li>-->
+            <li><b></b>朝向： 南</li>
+            <li><b></b>户型： 3室1厅
+                <span class="icons">合</span>
+            </li>
+            <li><b></b>楼层： 03/18层</li>
+            <li class="last"><b></b>交通：
+                <span class="lineList lineListnone" id="lineList">
+                  距9号线松江新城2039米
+                </span>
+            </li>
+        </ul>
+    </div>
+    <h2>基本信息</h2>
+    <div class="postrow">
+        <h3 class="fb">
+            <strong>编号：</strong> SHZRGY081772660_03</h3>
+        <p><strong>周边：</strong>隔一条马路就是安信商业广场，美容养生馆一条街！步行10分钟直达开元地中海商业广场，以及"zui娱乐"地段——后街。安信有养生一条龙，开元地中海有奥特莱斯，后街有夜宵一条龙。生活，就要"zui娱乐"！</p>
+        <br>
+        <p><strong>交通：</strong>从小区南门出有公交站台，松江3路、5路、14路等多条公交干线。步行到九号线松江大学城地铁站需要25分钟，通往徐家汇、漕河泾等。小区北门出口都有摩拜单车、出行方便。小区地段交通便利，出行不愁！</p>
+    </div>
+    <h2>房屋配置</h2>
+    <div class="postrow">
+        <ul class="dview_icon_list">
+            <li><i class="icon_view_01"></i><p>无线WIFI</p></li>
+            <li><i class="icon_view_09"></i><p>宽带</p></li>
+            <li><i class="icon_view_02"></i><p>停车场</p></li>
+
+            <li class="no"><i class="icon_view_04"></i><p>餐厅</p></li>
+            <li class="no"><i class="icon_view_07"></i><p>游泳池</p></li>
+            <li class="no"><i class="icon_view_08"></i><p>健身房</p></li>
+            <li class="no"><i class="icon_view_03"></i><p>接机服务</p></li>
+            <li class="no"><i class="icon_view_06"></i><p>会议服务</p></li>
+            <li class="no"><i class="icon_view_05"></i><p>商务中心</p></li>
+            <li>
+                <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                <span class="glyphicon-class">刷新</span>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+
+ 
+  {{/each}}
+</script>
+<div id="tableList">
+</div>
+
+<div class="postrow">
+    <div  id="container" style="top:1150px;left:100px;padding:50px; width: 700px;height: 400px" ></div>
+</div>
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)  return  unescape(r[2]); 
+     return null;
+}
+ 
+// 调用方法
+ $.ajax({
+                url:"/my/room/"+GetQueryString("liid"),
+                type:"get",
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    debugger;
+                    console.log("over..");
+
+                    //for (var d in data) {
+                    //  data[d].liid="/my/room/"+data[d].liid;
+                        //alert(data[d].courtname);
+                    //}
+                    var mdata =new Object();
+                    var mydata=new Array();
+                    mydata[0]=data;
+                    mdata.student = mydata;
+                    var myTemplate = Handlebars.compile($("#table-template").html());
+                    $('#tableList').html(myTemplate(mdata));
+                }
+            });
+
+  var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom:11,
+        center: [116.40, 39.91]
+    });
+    var marker = new AMap.Marker({
+            icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+            position: [116.405467, 39.907761]
+        });
+        marker.setMap(map);
+</script>
