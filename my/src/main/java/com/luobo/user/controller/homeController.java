@@ -58,6 +58,31 @@ public class homeController {
 		ModelAndView mad = new ModelAndView("addroom","loginFlag",logined);
 		return mad;
 	}
-	
+
+
+	@RequestMapping(value="account")
+	public  @ResponseBody  
+	ModelAndView  account(){
+		//int r = userService.register(u);
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
+        boolean logined =(boolean)session.getAttribute("logined");
+		System.out.println("head-->"+logined);
+		ModelAndView mad = new ModelAndView("account","loginFlag",logined);
+		return mad;
+	}
+
+
+	@RequestMapping(value="roomm")
+	public  @ResponseBody  
+	ModelAndView  roomm(){
+		//int r = userService.register(u);
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
+        boolean logined =(boolean)session.getAttribute("logined");
+		System.out.println("head-->"+logined);
+		ModelAndView mad = new ModelAndView("roomm","loginFlag",logined);
+		return mad;
+	}
 	
 }
