@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>11</title>
+    <title>add</title>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -37,8 +37,6 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-
-        
         var d = new Date();
         var t = d.getTime();
         $('#headerContainer').load('head?t='+t);

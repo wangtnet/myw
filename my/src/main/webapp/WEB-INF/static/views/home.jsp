@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>11</title>
+    <title>home</title>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -34,7 +34,7 @@
         $('#headerContainer').load('head?t='+t);
         $('#rowSearch').load('static/views/search.html?t='+t);
         $('#rowContent').load('static/views/home/li.html?t='+t);
-       // $('#left').load('showcontent.html');
+       
         $('#right').load('static/views/right.html?t='+t);
     });
 </script>

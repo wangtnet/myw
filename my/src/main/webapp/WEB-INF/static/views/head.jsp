@@ -9,8 +9,6 @@
             position: relative;
             z-index: 99;
             border-bottom: solid 1px #ddd;
-           
-
         }
 
         #header #headerlogo {
@@ -32,7 +30,6 @@
             font-size: 19px;
             line-height: 150%;
             font-weight: 600;
-
             margin-top: 20px;
         }
 
@@ -41,7 +38,6 @@
             width: 32px;
             height: 32px;
         }
-
         .nav {
             display: inline;
             margin-top: 10px;
@@ -74,7 +70,8 @@
             color: #666;
             font-size: 14px;
             line-height: 20px;
-                }
+        }
+
         #topRightList a{
             color: #666;
             font-size: 14px;
@@ -82,44 +79,15 @@
             padding-top: 5px;
         }
 
-
-        #content {
-            position: relative;
-            z-index: 9;
-            background: grey;
-            height: 300px;
-        }
-        #searchpan{
-            height: 200px;
-        }
-    #header ul.fr {
-        float: right;
-        padding-top: 27px;
-    }
-
-    #header ul.fr li {
+        #topRightList li{
             float: left;
-            position: relative;
-            padding: 0 7px;
-        	height: 16px;
-        	line-height: 16px;
-        	border-bottom: 0px;
+            padding-right: 30px;
         }
 
-    #header ul.fr li a {
-        padding-left: 10px;
-        position: relative;
-        text-decoration: none;
-    }
 
-
-    #sub-header ul.fr li a:hover {
-        color: #ffa000;
-    }
-
-    .fr {
-        float: right;
-    }
+        .fr {
+            float: right;
+        }
     </style>
     <div id="header">
         <img id="headerlogo" src="static/images/img/t.PNG"  />
@@ -140,7 +108,7 @@
             <c:choose>
                 <c:when test="${requestScope.loginFlag== 'true'}">  
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" style="min-width: 60px" data-toggle="dropdown">
                          我的账号 
                         <b class="caret"></b>
                         </a>

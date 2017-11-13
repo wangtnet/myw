@@ -4,7 +4,7 @@
 
 <html lang="zh-CN">
 <head>
-	<title>my</title>
+	<title>register</title>
 </head>
 
 <style type="text/css">

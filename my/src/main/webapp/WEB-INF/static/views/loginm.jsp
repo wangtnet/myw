@@ -6,7 +6,7 @@
 <html >
 
 <head>
-	<title>my</title>
+	<title>login</title>
 </head>
 
 <style type="text/css">
