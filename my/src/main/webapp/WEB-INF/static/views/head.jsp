@@ -126,7 +126,7 @@
         <p>南京</p>
         <div class="nav" >
             <ul class="clearfix">
-                <li><a href="/my/home" title="首页" class="active s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'ownhome'])">首页</a></li>
+                <li><a href="/my/homer" title="首页" class="active s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'ownhome'])">首页</a></li>
                 <li><a href="http://www.ziroomapartment.com/" title="自如寓" class="s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'apart'])">自如寓</a></li>
 
                 <li><a href="http://www.ziroom.com/zhuanti/minsu/index.html" title="民宿" class="s" onclick="_gaq.push(['_trackEvent', 'home_310000', 'click', 'minsu'])">民宿</a>
@@ -148,6 +148,7 @@
                             <li><a href="/my/account?p=accountset">账号设置</a></li>
                             <li><a href="/my/account?p=publish">发布内容</a></li>
                             <li><a href="/my/account?p=message">接收消息</a></li>
+                            <li><a href="/my/exitm">退出</a></li>
                         </ul>
                     </li>
 
@@ -156,8 +157,8 @@
      
   
             <c:otherwise> 
-                        <li id="ziroom_login" style="opacity: 1;"><a href="static/views/loginm.html" rel="nofollow">登录</a></li>
-                        <li id="ziroom_reg" style="opacity: 1;"><a href="static/views/registerm.html" rel="nofollow">注册</a></li>
+                        <li id="ziroom_login" style="opacity: 1;"><a href="/my/loginm" rel="nofollow">登录</a></li>
+                        <li id="ziroom_reg" style="opacity: 1;"><a href="/my/registerm" rel="nofollow">注册</a></li>
                     
             </c:otherwise>
             </c:choose>

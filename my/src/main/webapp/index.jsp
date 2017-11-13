@@ -2,7 +2,7 @@
 <body>
 <h2></h2>
  <script language="JavaScript" type="text/javascript">
-           window.location.href="static/views/registerm.html"; 
+           window.location.href="/my/loginm"; 
     </script>
 </body>
 </html>

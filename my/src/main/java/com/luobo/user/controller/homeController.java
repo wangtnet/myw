@@ -34,6 +34,17 @@ public class homeController {
 		ModelAndView mad = new ModelAndView("home","message","msg1");
 		return mad;
 	}
+
+	@RequestMapping(value="homer")
+	public  @ResponseBody  
+	ModelAndView  homer(){
+		//int r = userService.register(u);
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
+
+		ModelAndView mad = new ModelAndView("home","message","msg1");
+		return mad;
+	}
 	
 	@RequestMapping(value="head")
 	public  @ResponseBody  
@@ -46,6 +57,31 @@ public class homeController {
 		ModelAndView mad = new ModelAndView("head","loginFlag",logined);
 		return mad;
 	}
+	
+	@RequestMapping(value="loginm")
+	public  @ResponseBody  
+	ModelAndView  loginm(){
+		ModelAndView mad = new ModelAndView("loginm");
+		return mad;
+	}
+	@RequestMapping(value="exitm")
+	public  @ResponseBody  
+	ModelAndView  exitm(){
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
+        //将数据存储到session中
+        session.setAttribute("logined", false);
+		ModelAndView mad = new ModelAndView("loginm");
+		return mad;
+	}
+	
+	@RequestMapping(value="registerm")
+	public  @ResponseBody  
+	ModelAndView  registerm(){
+		ModelAndView mad = new ModelAndView("registerm");
+		return mad;
+	}
+	
 	
 	@RequestMapping(value="addroom")
 	public  @ResponseBody  

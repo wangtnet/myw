@@ -1,5 +1,10 @@
-<!DOCTYPE html>
-<html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html >
+
 <head>
 	<title>my</title>
 </head>
@@ -84,12 +89,12 @@
 <script src="../js/lib/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
 <body>
 <div class="head">
-	<h2>注册账号</h2>
-	<a href="http://www.w3school.com.cn">  返回主页?  </a>
+	<h2>登录</h2>
+	<a href="/my/home">  继续浏览?  </a>
 </div>
 
 <div class="main">
-	<form action="/my/user/register" method="post" id="post">
+	<form action="/my/home" method="post" id="post">
 		<div class="row">
 			<label class="left">
 				用户名
@@ -98,22 +103,18 @@
 		</div>
 		<div class="row">
 			<label class="left">
+				或邮箱登录
+			</label>
+			<input type="text" class="right" name="email" class="required">
+		</div>
+		<div class="row">
+			<label class="left">
 				密码
 			</label>
 			<input type="password" class="right" name="password" id="password" class="required">
 		</div>
-		<div class="row">
-			<label class="left">
-				确认密码
-			</label>
-			<input type="password" class="right" name="confirm_password" id="confirm_password" class="required">
-		</div>
-		<div class="row">
-			<label class="left">
-				邮箱
-			</label>
-			<input type="text" class="right" name="email" class="required">
-		</div>
+
+
 		<div class="row">
 			<label class="left">
 				验证码
@@ -125,19 +126,12 @@
 
 		</div>
 		<div class="row2">
-			<input type="submit" value="立即注册" style="margin-left: 20%;width: 20%;height: 70%">
+			<input type="submit" value="登录" style="margin-left: 20%;width: 20%;height: 70%">
 		</div>
 	</form>
 
 </div>
 <script>
-/*
-    $.validator.setDefaults({
-        submitHandler: function() {
-            alert("submitted!");
-        }
-    });
-*/
     $(function(){
 
         var validate = $("#post").validate({
@@ -154,10 +148,7 @@
                     required:true,
                     rangelength:[3,10]
                 },
-                confirm_password:{
-                    required:true,
-                    equalTo:"#password"
-                },
+
                 registercode:{
                     required:true,
                     remote:{                                          //验证用户名是否存在
@@ -191,10 +182,7 @@
                     required: "必填选项",
                     rangelength: "密码最小长度:3, 最大长度:10。"
                 },
-                confirm_password:{
-                    required: "必填选项",
-                    equalTo:"两次密码输入不一致"
-                },
+  
                 registercode:{
                     required: "必填选项",
 					remote:"验证码输入不正确"
