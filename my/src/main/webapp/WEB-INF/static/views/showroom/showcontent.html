@@ -103,18 +103,22 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
+     <script id="table-template" type="text/x-handlebars-template">
+    {{#each student}} 
     <div class="WB_cardwrap">
     <h2>基本信息</h2>
     <div class="postrow">
         <ul class="detail_room">
-            <li><b></b>面积： 19.3㎡   </li>
-            <!--<li><b></b>朝向： 南</li>-->
+            <li><b></b>位置： {{areaname}}--{{courtname}}   </li>
+            <li><b></b>面积： {{acreage}}㎡   </li>
             <li><b></b>朝向： 南</li>
-            <li><b></b>户型： 3室1厅
+            <li><b></b>户型： {{roomnum}}室{{tingnum}}厅
                 <span class="icons">合</span>
             </li>
-            <li><b></b>楼层： 03/18层</li>
+            <li><b></b>楼层： {{myfloor}}/{{floor}}层</li>
+            <li><b></b>房东身份：{{identification}}</li>
+            <li><b></b>价格：{{price}}元</li>
+            <li><b></b>手机号：{{phonenum}}元</li>
             <li class="last"><b></b>交通：
                 <span class="lineList lineListnone" id="lineList">
                   距9号线松江新城2039米
@@ -127,11 +131,11 @@
     <div class="WB_cardwrap">
     <h2>描述信息</h2>
     <div class="postrow">
-        <h3 class="fb">
-            <strong>编号：</strong> SHZRGY081772660_03</h3>
-        <p><strong>周边：</strong>隔一条马路就是安信商业广场，美容养生馆一条街！步行10分钟直达开元地中海商业广场，以及"zui娱乐"地段——后街。安信有养生一条龙，开元地中海有奥特莱斯，后街有夜宵一条龙。生活，就要"zui娱乐"！</p>
+        <p class="fb">
+       <b></b> <strong>编号：</strong> {{liid}}</p>
+        <p><strong>周边描述：</strong>{{surroundinginfo}}</p>
         <br>
-        <p><strong>交通：</strong>从小区南门出有公交站台，松江3路、5路、14路等多条公交干线。步行到九号线松江大学城地铁站需要25分钟，通往徐家汇、漕河泾等。小区北门出口都有摩拜单车、出行方便。小区地段交通便利，出行不愁！</p>
+        <p><strong>房间描述：</strong>{{roominfo}}</p>
     </div>
     </div>
 
@@ -150,7 +154,11 @@
         </ul>
     </div>
     </div>
+     {{/each}}
+         </script>
+        <div id="tableList"> 
 
+        </div>
 </div>
 
 <div class="WB_cardwrapmap">
@@ -170,7 +178,7 @@ function GetQueryString(name)
  
 // 调用方法
 $.ajax({
-        url:"/my/room/"+GetQueryString("liid"),
+        url:"/my/room/liid/"+GetQueryString("liid"),
             type:"get",
             processData:false,
             contentType:false,
@@ -186,8 +194,8 @@ $.ajax({
                 var mydata=new Array();
                 mydata[0]=data;
                 mdata.student = mydata;
-                //var myTemplate = Handlebars.compile($("#table-template").html());
-                //$('#tableList').html(myTemplate(mdata));
+                var myTemplate = Handlebars.compile($("#table-template").html());
+                $('#tableList').html(myTemplate(mdata));
             }
         });
 

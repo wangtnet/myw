@@ -20,4 +20,6 @@ public interface roomMapper {
     int updateByPrimaryKeySelective(room record);
 
     int updateByPrimaryKey(room record);
+    
+    List <room> selectByUserid(long userid);
 }

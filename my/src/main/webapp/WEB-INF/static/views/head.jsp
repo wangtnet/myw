@@ -114,7 +114,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="/my/account?p=accountset">账号设置</a></li>
-                            <li><a href="/my/account?p=publish">发布内容</a></li>
+                            <li><a href="/my/account?p=accountpublishs">发布内容</a></li>
                             <li><a href="/my/account?p=message">接收消息</a></li>
                             <li><a href="/my/exitm">退出</a></li>
                         </ul>

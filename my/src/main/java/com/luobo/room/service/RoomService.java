@@ -44,6 +44,12 @@ public class RoomService implements IRoomService {
 		// TODO Auto-generated method stub
 		return roomDao.selectAllRooms();
 	}
+
+	@Override
+	public List<room> selectByUserid(long userid) {
+		// TODO Auto-generated method stub
+		return roomDao.selectByUserid(userid);
+	}
 	
 	
 }

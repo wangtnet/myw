@@ -85,12 +85,12 @@
 	}
 </style>
 <link rel="stylesheet" href="../js/lib/jquery-validation-1.14.0/demo/css/screen.css">
-<script src="../js/lib/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="../js/lib/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+<script src="static/js/lib/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="static/js/lib/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
 <body>
 <div class="head">
 	<h2>登录</h2>
-	<a href="/my/home">  继续浏览?  </a>
+	<a href="/my/homer">  继续浏览?  </a>
 </div>
 
 <div class="main">
@@ -114,7 +114,7 @@
 			<input type="password" class="right" name="password" id="password" class="required">
 		</div>
 
-
+		<!--
 		<div class="row">
 			<label class="left">
 				验证码
@@ -122,9 +122,8 @@
 
 			<input type="button" id="checkCode" class="button right1" style="float: left; " value="" name="checkCode">
 			<input type="text" id="registercode"  class="right2" name="registercode"  >
-
-
 		</div>
+		-->
 		<div class="row2">
 			<input type="submit" value="登录" style="margin-left: 20%;width: 20%;height: 70%">
 		</div>
@@ -148,7 +147,7 @@
                     required:true,
                     rangelength:[3,10]
                 },
-
+				/*
                 registercode:{
                     required:true,
                     remote:{                                          //验证用户名是否存在
@@ -168,7 +167,8 @@
                             }
                         }
                     }
-                }
+                }*/
+
             },
             messages:{
                 username:{
@@ -182,11 +182,11 @@
                     required: "必填选项",
                     rangelength: "密码最小长度:3, 最大长度:10。"
                 },
-  
+  				/*
                 registercode:{
                     required: "必填选项",
 					remote:"验证码输入不正确"
-                }
+                }*/
             }
         });
     });

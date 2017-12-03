@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,14 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.luobo.room.pojo.room;
 import com.luobo.room.service.IRoomService;
-import com.luobo.user.service.IUserService;
-import com.sun.org.apache.regexp.internal.recompile;
-
-
+import com.luobo.user.pojo.user;
 
 @Controller
 @RequestMapping("/room")
@@ -34,13 +35,15 @@ public class roomController {
 	@RequestMapping(method = RequestMethod.POST)
 	public  @ResponseBody  
 	String insertRoom(room r){
-		//int r = userService.register(r);
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
 		System.out.println("now"+r.getLiid());
-		if (r.getLiid().trim().isEmpty() ) {
+		if (r.getLiid()==null) {
 			Long lliid = System.currentTimeMillis();
 			r.setLiid(lliid.toString());
 			r.setId(null);
-			
+			user u =(user)session.getAttribute("user");
+			r.setUserid(u.getId());
 			Integer ret = roomService.insertRoom(r);
 					System.out.println(
 				r.getLiid() + "," + r.getAreaname() + "," + r.getCourtname() + "," + r.getSurroundinginfo());
@@ -57,9 +60,8 @@ public class roomController {
 			
 			System.out.println(
 					r.getLiid() + "," + r.getAreaname() + "," + r.getCourtname() + "," + r.getSurroundinginfo());
-			return ret.toString();
+			return room.getLiid().toString();
 		}
-
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value="all")
@@ -69,33 +71,29 @@ public class roomController {
 		return rooms;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value="{liid}")
+	@RequestMapping(method = RequestMethod.GET,value="/liid/{liid}")
 	public  @ResponseBody  
 	room selectRoomByLiid(@PathVariable("liid") String liid){
 		return roomService.selectByLiid(liid);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.GET,value="/mepublish")
 	public  @ResponseBody  
-	String updateRoom(room r){
-		//int r = userService.register(r);
-		System.out.println(r.getLiid()+","+r.getAreaname()+","
-				+r.getCourtname()+","
-				+r.getSurroundinginfo());
-		Integer ret = roomService.updateRoom(r);
-		System.out.println("update ret = "+ret);
-		return ret.toString();
+	List<room> selectRoomByUserid()
+	{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+        HttpSession session = request.getSession();
+        user u =(user)session.getAttribute("user");
+		return roomService.selectByUserid(u.getId());
 	}
 	
-	
+
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	@ResponseBody 
-   public String upload(
+    public String upload(
            @RequestParam("one-specific-file") CommonsMultipartFile upfile,
            HttpServletRequest req,Integer rommid) throws IOException {
        // |获取在Web服务器上的 绝对路径
-
-	   
        System.out.println("come-->roomid="+rommid);
        String path = req.getRealPath("/WEB-INF/static/");
        System.out.println(path);
@@ -103,7 +101,6 @@ public class roomController {
        InputStream is = upfile.getInputStream();
        // |文件输出流
        OutputStream os = new FileOutputStream(new File(path,upfile.getOriginalFilename()));
-
        System.out.println("come0");
        // |循环写入
        int length = 0;
@@ -114,14 +111,36 @@ public class roomController {
        System.out.println("come1");
        is.close();
        os.close();
-       //room r =new room();
-       
-       
-       // ===渲染===
        System.out.println("come2");
-       // ModelAndView mView = new ModelAndView();
-       // mView.setViewName("upload");
-       // |返回至渲染器
        return upfile.getOriginalFilename();
    }
 }
+
+
+/*
+@RequestMapping(method = RequestMethod.PUT)
+public  @ResponseBody  
+String updateRoom(room r){
+	//int r = userService.register(r);
+	System.out.println(r.getLiid()+","+r.getAreaname()+","
+			+r.getCourtname()+","
+			+r.getSurroundinginfo());
+	Integer ret = roomService.updateRoom(r);
+	System.out.println("update ret = "+ret);
+	return ret.toString();
+}
+*/
+/*
+@RequestMapping(method = RequestMethod.PUT)
+public  @ResponseBody  
+String updatRoom(room r){
+	room room =roomService.selectByLiid(r.getLiid().trim());
+	r.setLiid(room.getLiid());
+	Integer ret = roomService.updateRoom(r);
+	System.out.println("update ret = "+ret);
+	
+	System.out.println(
+			r.getLiid() + "," + r.getAreaname() + "," + r.getCourtname() + "," + r.getSurroundinginfo());
+	return ret.toString();
+}
+*/

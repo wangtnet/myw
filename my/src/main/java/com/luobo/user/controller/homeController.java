@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,18 +22,17 @@ public class homeController {
 	@RequestMapping(value="home")
 	public  @ResponseBody  
 	ModelAndView  home(user u){
-				
 		//int r = userService.register(u);
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
         HttpSession session = request.getSession();
         //将数据存储到session中
-        session.setAttribute("logined", userService.checkUser(u));
-         //获取session的Id
-        String sessionId = session.getId();
-		System.out.println("login--"+u.getUsername()+",id = "+session.getId()+userService.checkUser(u));
-		
-		ModelAndView mad = new ModelAndView("home","message","msg1");
-		return mad;
+        if(userService.checkUser(u, session)){
+        	ModelAndView mad = new ModelAndView("home","message","msg1");
+        	return mad;
+		}else{
+			ModelAndView mad = new ModelAndView("loginm","messeage","loginerror");	
+        	return mad;
+		}   
 	}
 
 	@RequestMapping(value="homer")
@@ -42,7 +42,7 @@ public class homeController {
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
         HttpSession session = request.getSession();
 
-		ModelAndView mad = new ModelAndView("home","message","msg1");
+		ModelAndView mad = new ModelAndView("home","message","msg2");
 		return mad;
 	}
 	
@@ -52,10 +52,14 @@ public class homeController {
 		//int r = userService.register(u);
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
         HttpSession session = request.getSession();
-        boolean logined =(boolean)session.getAttribute("logined");
-		System.out.println("head-->"+logined);
-		ModelAndView mad = new ModelAndView("head","loginFlag",logined);
-		return mad;
+      
+        if(session.getAttribute("logined")==null){
+        	return new ModelAndView("head","loginFlag",false);
+        }else{
+        	Boolean logined =(Boolean)session.getAttribute("logined");
+        	System.out.println("head-->"+logined);
+        	return new ModelAndView("head","loginFlag",logined);
+		}
 	}
 	
 	@RequestMapping(value="loginm")
@@ -83,18 +87,21 @@ public class homeController {
 	}
 	
 	
-	@RequestMapping(value="addroom")
-	public  @ResponseBody  
-	ModelAndView  addRoom(){
-		//int r = userService.register(u);
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
-        HttpSession session = request.getSession();
-        boolean logined =(boolean)session.getAttribute("logined");
-		System.out.println("head-->"+logined);
-		ModelAndView mad = new ModelAndView("addroom","loginFlag",logined);
-		return mad;
-	}
+	@RequestMapping(value = "addroom")
+	public @ResponseBody ModelAndView addRoom() {
+		// int r = userService.register(u);
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		HttpSession session = request.getSession();
 
+		if (session.getAttribute("logined") == null) {
+			return new ModelAndView("addroom", "loginFlag", false);
+		} else {
+			Boolean logined = (Boolean) session.getAttribute("logined");
+			System.out.println("head-->" + logined);
+			return new ModelAndView("addroom", "loginFlag", logined);
+		}
+	}
 
 	@RequestMapping(value="account")
 	public  @ResponseBody  
@@ -102,10 +109,15 @@ public class homeController {
 		//int r = userService.register(u);
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
         HttpSession session = request.getSession();
-        boolean logined =(boolean)session.getAttribute("logined");
-		System.out.println("head-->"+logined);
-		ModelAndView mad = new ModelAndView("account","loginFlag",logined);
-		return mad;
+        
+        if (session.getAttribute("logined") == null) {
+			return new ModelAndView("account", "loginFlag", false);
+		} else {
+			Boolean logined = (Boolean) session.getAttribute("logined");
+			System.out.println("head-->" + logined);
+			return new ModelAndView("account", "loginFlag", logined);
+		}
+
 	}
 
 
@@ -115,10 +127,14 @@ public class homeController {
 		//int r = userService.register(u);
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
         HttpSession session = request.getSession();
-        boolean logined =(boolean)session.getAttribute("logined");
-		System.out.println("head-->"+logined);
-		ModelAndView mad = new ModelAndView("roomm","loginFlag",logined);
-		return mad;
+		
+        if (session.getAttribute("logined") == null) {
+			return new ModelAndView("roomm", "loginFlag", false);
+		} else {
+			Boolean logined = (Boolean) session.getAttribute("logined");
+			System.out.println("head-->" + logined);
+			return new ModelAndView("roomm", "loginFlag", logined);
+		}
 	}
 	
 }

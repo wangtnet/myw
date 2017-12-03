@@ -9,7 +9,6 @@
     <result column="courtname" property="courtname" jdbcType="VARCHAR" />
     <result column="subway" property="subway" jdbcType="VARCHAR" />
     <result column="surroundinginfo" property="surroundinginfo" jdbcType="VARCHAR" />
-    <result column="trafficinfo" property="trafficinfo" jdbcType="VARCHAR" />
     <result column="WIFI" property="wifi" jdbcType="BIT" />
     <result column="aircondtioner" property="aircondtioner" jdbcType="BIT" />
     <result column="washer" property="washer" jdbcType="BIT" />
@@ -19,9 +18,18 @@
     <result column="balcony" property="balcony" jdbcType="BIT" />
     <result column="acreage" property="acreage" jdbcType="REAL" />
     <result column="orientation" property="orientation" jdbcType="TINYINT" />
+    <result column="decoration" property="decoration" jdbcType="TINYINT" />
     <result column="floor" property="floor" jdbcType="TINYINT" />
+    <result column="myfloor" property="myfloor" jdbcType="TINYINT" />
+    <result column="roomnum" property="roomnum" jdbcType="TINYINT" />
+    <result column="tingnum" property="tingnum" jdbcType="TINYINT" />
+    <result column="washroomnum" property="washroomnum" jdbcType="TINYINT" />
     <result column="roominfo" property="roominfo" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="BIT" />
+    <result column="rentmethod" property="rentmethod" jdbcType="TINYINT" />
+    <result column="identification" property="identification" jdbcType="TINYINT" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="phonenum" property="phonenum" jdbcType="VARCHAR" />
     <result column="image1" property="image1" jdbcType="VARCHAR" />
     <result column="imageinfo1" property="imageinfo1" jdbcType="VARCHAR" />
     <result column="image2" property="image2" jdbcType="VARCHAR" />
@@ -34,10 +42,11 @@
     <result column="imageinfo5" property="imageinfo5" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, liid, userid, areaname, courtname, subway, surroundinginfo, trafficinfo, WIFI, 
-    aircondtioner, washer, fridges, hotwater, kitchen, balcony, acreage, orientation, 
-    floor, roominfo, state, image1, imageinfo1, image2, imageinfo2, image3, imageinfo3, 
-    image4, imageinfo4, image5, imageinfo5
+    id, liid, userid, areaname, courtname, subway, surroundinginfo, WIFI, aircondtioner, 
+    washer, fridges, hotwater, kitchen, balcony, acreage, orientation, decoration, floor, 
+    myfloor, roomnum, tingnum, washroomnum, roominfo, state, rentmethod, identification, 
+    price, phonenum, image1, imageinfo1, image2, imageinfo2, image3, imageinfo3, image4, 
+    imageinfo4, image5, imageinfo5
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -56,6 +65,12 @@
     from room
     where liid = #{liid,jdbcType=VARCHAR}
   </select>
+     <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where userid = #{userid,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from room
     where id = #{id,jdbcType=BIGINT}
@@ -63,24 +78,30 @@
   <insert id="insert" parameterType="com.luobo.room.pojo.room" >
     insert into room (id, liid, userid, 
       areaname, courtname, subway, 
-      surroundinginfo, trafficinfo, WIFI, 
-      aircondtioner, washer, fridges, 
-      hotwater, kitchen, balcony, acreage, 
-      orientation, floor, roominfo, 
-      state, image1, imageinfo1, 
-      image2, imageinfo2, image3, 
-      imageinfo3, image4, imageinfo4, 
-      image5, imageinfo5)
+      surroundinginfo, WIFI, aircondtioner, 
+      washer, fridges, hotwater, kitchen, 
+      balcony, acreage, orientation, 
+      decoration, floor, myfloor, 
+      roomnum, tingnum, washroomnum, 
+      roominfo, state, rentmethod, 
+      identification, price, phonenum, 
+      image1, imageinfo1, image2, 
+      imageinfo2, image3, imageinfo3, 
+      image4, imageinfo4, image5, 
+      imageinfo5)
     values (#{id,jdbcType=BIGINT}, #{liid,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT}, 
       #{areaname,jdbcType=VARCHAR}, #{courtname,jdbcType=VARCHAR}, #{subway,jdbcType=VARCHAR}, 
-      #{surroundinginfo,jdbcType=VARCHAR}, #{trafficinfo,jdbcType=VARCHAR}, #{wifi,jdbcType=BIT}, 
-      #{aircondtioner,jdbcType=BIT}, #{washer,jdbcType=BIT}, #{fridges,jdbcType=BIT}, 
-      #{hotwater,jdbcType=BIT}, #{kitchen,jdbcType=BIT}, #{balcony,jdbcType=BIT}, #{acreage,jdbcType=REAL}, 
-      #{orientation,jdbcType=TINYINT}, #{floor,jdbcType=TINYINT}, #{roominfo,jdbcType=VARCHAR}, 
-      #{state,jdbcType=BIT}, #{image1,jdbcType=VARCHAR}, #{imageinfo1,jdbcType=VARCHAR}, 
-      #{image2,jdbcType=VARCHAR}, #{imageinfo2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
-      #{imageinfo3,jdbcType=VARCHAR}, #{image4,jdbcType=VARCHAR}, #{imageinfo4,jdbcType=VARCHAR}, 
-      #{image5,jdbcType=VARCHAR}, #{imageinfo5,jdbcType=VARCHAR})
+      #{surroundinginfo,jdbcType=VARCHAR}, #{wifi,jdbcType=BIT}, #{aircondtioner,jdbcType=BIT}, 
+      #{washer,jdbcType=BIT}, #{fridges,jdbcType=BIT}, #{hotwater,jdbcType=BIT}, #{kitchen,jdbcType=BIT}, 
+      #{balcony,jdbcType=BIT}, #{acreage,jdbcType=REAL}, #{orientation,jdbcType=TINYINT}, 
+      #{decoration,jdbcType=TINYINT}, #{floor,jdbcType=TINYINT}, #{myfloor,jdbcType=TINYINT}, 
+      #{roomnum,jdbcType=TINYINT}, #{tingnum,jdbcType=TINYINT}, #{washroomnum,jdbcType=TINYINT}, 
+      #{roominfo,jdbcType=VARCHAR}, #{state,jdbcType=BIT}, #{rentmethod,jdbcType=TINYINT}, 
+      #{identification,jdbcType=TINYINT}, #{price,jdbcType=INTEGER}, #{phonenum,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{imageinfo1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, 
+      #{imageinfo2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, #{imageinfo3,jdbcType=VARCHAR}, 
+      #{image4,jdbcType=VARCHAR}, #{imageinfo4,jdbcType=VARCHAR}, #{image5,jdbcType=VARCHAR}, 
+      #{imageinfo5,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.luobo.room.pojo.room" >
     insert into room
@@ -105,9 +126,6 @@
       </if>
       <if test="surroundinginfo != null" >
         surroundinginfo,
-      </if>
-      <if test="trafficinfo != null" >
-        trafficinfo,
       </if>
       <if test="wifi != null" >
         WIFI,
@@ -136,14 +154,41 @@
       <if test="orientation != null" >
         orientation,
       </if>
+      <if test="decoration != null" >
+        decoration,
+      </if>
       <if test="floor != null" >
         floor,
+      </if>
+      <if test="myfloor != null" >
+        myfloor,
+      </if>
+      <if test="roomnum != null" >
+        roomnum,
+      </if>
+      <if test="tingnum != null" >
+        tingnum,
+      </if>
+      <if test="washroomnum != null" >
+        washroomnum,
       </if>
       <if test="roominfo != null" >
         roominfo,
       </if>
       <if test="state != null" >
         state,
+      </if>
+      <if test="rentmethod != null" >
+        rentmethod,
+      </if>
+      <if test="identification != null" >
+        identification,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="phonenum != null" >
+        phonenum,
       </if>
       <if test="image1 != null" >
         image1,
@@ -198,9 +243,6 @@
       <if test="surroundinginfo != null" >
         #{surroundinginfo,jdbcType=VARCHAR},
       </if>
-      <if test="trafficinfo != null" >
-        #{trafficinfo,jdbcType=VARCHAR},
-      </if>
       <if test="wifi != null" >
         #{wifi,jdbcType=BIT},
       </if>
@@ -228,14 +270,41 @@
       <if test="orientation != null" >
         #{orientation,jdbcType=TINYINT},
       </if>
+      <if test="decoration != null" >
+        #{decoration,jdbcType=TINYINT},
+      </if>
       <if test="floor != null" >
         #{floor,jdbcType=TINYINT},
+      </if>
+      <if test="myfloor != null" >
+        #{myfloor,jdbcType=TINYINT},
+      </if>
+      <if test="roomnum != null" >
+        #{roomnum,jdbcType=TINYINT},
+      </if>
+      <if test="tingnum != null" >
+        #{tingnum,jdbcType=TINYINT},
+      </if>
+      <if test="washroomnum != null" >
+        #{washroomnum,jdbcType=TINYINT},
       </if>
       <if test="roominfo != null" >
         #{roominfo,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         #{state,jdbcType=BIT},
+      </if>
+      <if test="rentmethod != null" >
+        #{rentmethod,jdbcType=TINYINT},
+      </if>
+      <if test="identification != null" >
+        #{identification,jdbcType=TINYINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
       </if>
       <if test="image1 != null" >
         #{image1,jdbcType=VARCHAR},
@@ -290,9 +359,6 @@
       <if test="surroundinginfo != null" >
         surroundinginfo = #{surroundinginfo,jdbcType=VARCHAR},
       </if>
-      <if test="trafficinfo != null" >
-        trafficinfo = #{trafficinfo,jdbcType=VARCHAR},
-      </if>
       <if test="wifi != null" >
         WIFI = #{wifi,jdbcType=BIT},
       </if>
@@ -320,14 +386,41 @@
       <if test="orientation != null" >
         orientation = #{orientation,jdbcType=TINYINT},
       </if>
+      <if test="decoration != null" >
+        decoration = #{decoration,jdbcType=TINYINT},
+      </if>
       <if test="floor != null" >
         floor = #{floor,jdbcType=TINYINT},
+      </if>
+      <if test="myfloor != null" >
+        myfloor = #{myfloor,jdbcType=TINYINT},
+      </if>
+      <if test="roomnum != null" >
+        roomnum = #{roomnum,jdbcType=TINYINT},
+      </if>
+      <if test="tingnum != null" >
+        tingnum = #{tingnum,jdbcType=TINYINT},
+      </if>
+      <if test="washroomnum != null" >
+        washroomnum = #{washroomnum,jdbcType=TINYINT},
       </if>
       <if test="roominfo != null" >
         roominfo = #{roominfo,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=BIT},
+      </if>
+      <if test="rentmethod != null" >
+        rentmethod = #{rentmethod,jdbcType=TINYINT},
+      </if>
+      <if test="identification != null" >
+        identification = #{identification,jdbcType=TINYINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="phonenum != null" >
+        phonenum = #{phonenum,jdbcType=VARCHAR},
       </if>
       <if test="image1 != null" >
         image1 = #{image1,jdbcType=VARCHAR},
@@ -370,7 +463,6 @@
       courtname = #{courtname,jdbcType=VARCHAR},
       subway = #{subway,jdbcType=VARCHAR},
       surroundinginfo = #{surroundinginfo,jdbcType=VARCHAR},
-      trafficinfo = #{trafficinfo,jdbcType=VARCHAR},
       WIFI = #{wifi,jdbcType=BIT},
       aircondtioner = #{aircondtioner,jdbcType=BIT},
       washer = #{washer,jdbcType=BIT},
@@ -380,9 +472,18 @@
       balcony = #{balcony,jdbcType=BIT},
       acreage = #{acreage,jdbcType=REAL},
       orientation = #{orientation,jdbcType=TINYINT},
+      decoration = #{decoration,jdbcType=TINYINT},
       floor = #{floor,jdbcType=TINYINT},
+      myfloor = #{myfloor,jdbcType=TINYINT},
+      roomnum = #{roomnum,jdbcType=TINYINT},
+      tingnum = #{tingnum,jdbcType=TINYINT},
+      washroomnum = #{washroomnum,jdbcType=TINYINT},
       roominfo = #{roominfo,jdbcType=VARCHAR},
       state = #{state,jdbcType=BIT},
+      rentmethod = #{rentmethod,jdbcType=TINYINT},
+      identification = #{identification,jdbcType=TINYINT},
+      price = #{price,jdbcType=INTEGER},
+      phonenum = #{phonenum,jdbcType=VARCHAR},
       image1 = #{image1,jdbcType=VARCHAR},
       imageinfo1 = #{imageinfo1,jdbcType=VARCHAR},
       image2 = #{image2,jdbcType=VARCHAR},

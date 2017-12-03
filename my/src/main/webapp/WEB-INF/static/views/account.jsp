@@ -27,12 +27,23 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    function GetQueryString(name)
+    {
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if(r!=null)  return  unescape(r[2]); 
+         return null;
+    }
+
     $(document).ready(function(){
         var d = new Date();
         var t = d.getTime();
         
         $('#headerContainer').load('head?t='+t);
-        $('#rowContent').load('static/views/account/accountset.html?t='+t);
+        var strUrl = 'static/views/account/'+GetQueryString('p')+'.html?t='+t;
+        $('#rowContent').load(strUrl);
+        //'static/views/account/accountset.html?t='+t
 
     });
 </script>

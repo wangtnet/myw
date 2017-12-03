@@ -76,19 +76,20 @@
 	.row2 input{
 		border: 1px solid #aaa ;
 		background-color: #ffa100;
+		margin:10px;
 	}
 
 	#checkCode{
 		background-image:url(/my/user/checkCode) ;
 	}
 </style>
-<link rel="stylesheet" href="../js/lib/jquery-validation-1.14.0/demo/css/screen.css">
-<script src="../js/lib/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="../js/lib/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+<link rel="stylesheet" href="static/js/lib/jquery-validation-1.14.0/demo/css/screen.css">
+<script src="static/js/lib/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="static/js/lib/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
 <body>
 <div class="head">
 	<h2>注册账号</h2>
-	<a href="/my/home">  返回主页?  </a>
+	<a href="/my/homer">  返回主页?  </a>
 </div>
 
 <div class="main">
@@ -97,7 +98,7 @@
 			<label class="left">
 				用户名
 			</label>
-			<input type="text" class="right" name="username" class="required">
+			<input type="text" class="right" id="username" name="username" class="required">
 		</div>
 		<div class="row">
 			<label class="left">
@@ -109,27 +110,29 @@
 			<label class="left">
 				确认密码
 			</label>
-			<input type="password" class="right" name="confirm_password" id="confirm_password" class="required">
+			<input type="password" class="right" id="confirm_password" name="confirm_password" id="confirm_password" class="required">
 		</div>
 		<div class="row">
 			<label class="left">
 				邮箱
 			</label>
-			<input type="text" class="right" name="email" class="required">
+			<input type="text" class="right" name="email" id="email" class="required">
 		</div>
 		<div class="row">
 			<label class="left">
 				验证码
 			</label>
-
+<!--
 			<input type="button" id="checkCode" class="button right1" style="float: left; " value="" name="checkCode">
 			<input type="text" id="registercode"  class="right2" name="registercode"  >
-
-
+-->
+			<input type="text" class="right" name="registercode" class="required">
 		</div>
-		<div class="row2">
-			<input type="submit" value="立即注册" style="margin-left: 20%;width: 20%;height: 70%">
+		<div class="row2 ">
+			<input type="button" id="sendCode" value="发验证码到邮箱" class="button right1" style="width:10%; float: left;margin-left: 17%; " value="">
+			<input type="submit" value="立即注册" class="button right1"  value="">
 		</div>
+
 	</form>
 
 </div>
@@ -144,7 +147,7 @@
     $(function(){
 
         var validate = $("#post").validate({
-            onfocusout: function(element) { $(element).valid(); },
+           // onfocusout: function(element) { $(element).valid(); },
             rules:{
                 username:{
                     required:true
@@ -161,6 +164,11 @@
                     required:true,
                     equalTo:"#password"
                 },
+                registercode:{
+                    required:true,
+                    rangelength:[4]
+                },
+                /*
                 registercode:{
                     required:true,
                     remote:{                                          //验证用户名是否存在
@@ -181,6 +189,7 @@
                         }
                     }
                 }
+                */
             },
             messages:{
                 username:{
@@ -199,18 +208,49 @@
                     equalTo:"两次密码输入不一致"
                 },
                 registercode:{
-                    required: "必填选项",
+                    required: "必填选项(点击发验证码到邮箱，然后进邮箱获取)",
 					remote:"验证码输入不正确"
                 }
             }
         });
     });
 
+    function submit(){
+        var obj = $('#post').serialize();
+    　      $.ajax({
+                url:"/my/user/register",
+                type:"post",
+                data:obj,
+                processData:false,
+                //contentType:"application/x-www-form-urlencoded",
+                success:function(data){
+                    console.log("over..");
+                    alert(data);
+                    if(data=='1')
+                    {
+                    	$("#sendCode").text("验证码已发送有效时间1小时");
+                    }
+                    //window.location.href ="/my/addroom?liid="+data;
+                }
+            });
+        return false;
+    }
+
+    $("#sendCode").bind("click",function(){
+    	$("#username").valid(); 
+    	$("#password").valid(); 
+    	$("#confirm_password").valid(); 
+    	$("#email").valid(); 
+    	submit();
+        //var timestamp = Date.parse(new Date());
+        //$("#checkCode").css("background-image","url(/my/user/checkCode?t="+timestamp+")");
+    });
+    /*
     $("#checkCode").bind("click",function(){
         var timestamp = Date.parse(new Date());
         $("#checkCode").css("background-image","url(/my/user/checkCode?t="+timestamp+")");
+    });*/
 
-    });
 </script>
 
 </body>

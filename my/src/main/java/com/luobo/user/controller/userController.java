@@ -44,7 +44,8 @@ public class userController {
 	
 	
 	
-	//
+	
+	/*验证码的暂时不用*/
 	@RequestMapping(value="checkRegistercode")
 	public  @ResponseBody  
 	boolean checkRegistercode(HttpServletRequest request,String registercode){
@@ -61,6 +62,7 @@ public class userController {
 		return false;
 	}
 	
+	/*验证码的暂时不用*/
 	@RequestMapping(value="checkCode")
 	public  @ResponseBody  
 	void getAuthCode(HttpServletRequest request, HttpServletResponse response,HttpSession session)

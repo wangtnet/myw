@@ -1,5 +1,8 @@
 package com.luobo.user.dao;
 
+import java.util.List;
+
+import com.luobo.room.pojo.room;
 import com.luobo.user.pojo.user;
 
 public interface userMapper {
@@ -16,4 +19,6 @@ public interface userMapper {
     int updateByPrimaryKeySelective(user record);
 
     int updateByPrimaryKey(user record);
+    
+   
 }

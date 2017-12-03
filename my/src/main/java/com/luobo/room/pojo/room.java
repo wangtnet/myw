@@ -15,8 +15,6 @@ public class room {
 
     private String surroundinginfo;
 
-    private String trafficinfo;
-
     private Boolean wifi;
 
     private Boolean aircondtioner;
@@ -35,11 +33,29 @@ public class room {
 
     private Byte orientation;
 
+    private Byte decoration;
+
     private Byte floor;
+
+    private Byte myfloor;
+
+    private Byte roomnum;
+
+    private Byte tingnum;
+
+    private Byte washroomnum;
 
     private String roominfo;
 
     private Boolean state;
+
+    private Byte rentmethod;
+
+    private Byte identification;
+
+    private Integer price;
+
+    private String phonenum;
 
     private String image1;
 
@@ -117,14 +133,6 @@ public class room {
         this.surroundinginfo = surroundinginfo == null ? null : surroundinginfo.trim();
     }
 
-    public String getTrafficinfo() {
-        return trafficinfo;
-    }
-
-    public void setTrafficinfo(String trafficinfo) {
-        this.trafficinfo = trafficinfo == null ? null : trafficinfo.trim();
-    }
-
     public Boolean getWifi() {
         return wifi;
     }
@@ -197,12 +205,52 @@ public class room {
         this.orientation = orientation;
     }
 
+    public Byte getDecoration() {
+        return decoration;
+    }
+
+    public void setDecoration(Byte decoration) {
+        this.decoration = decoration;
+    }
+
     public Byte getFloor() {
         return floor;
     }
 
     public void setFloor(Byte floor) {
         this.floor = floor;
+    }
+
+    public Byte getMyfloor() {
+        return myfloor;
+    }
+
+    public void setMyfloor(Byte myfloor) {
+        this.myfloor = myfloor;
+    }
+
+    public Byte getRoomnum() {
+        return roomnum;
+    }
+
+    public void setRoomnum(Byte roomnum) {
+        this.roomnum = roomnum;
+    }
+
+    public Byte getTingnum() {
+        return tingnum;
+    }
+
+    public void setTingnum(Byte tingnum) {
+        this.tingnum = tingnum;
+    }
+
+    public Byte getWashroomnum() {
+        return washroomnum;
+    }
+
+    public void setWashroomnum(Byte washroomnum) {
+        this.washroomnum = washroomnum;
     }
 
     public String getRoominfo() {
@@ -219,6 +267,38 @@ public class room {
 
     public void setState(Boolean state) {
         this.state = state;
+    }
+
+    public Byte getRentmethod() {
+        return rentmethod;
+    }
+
+    public void setRentmethod(Byte rentmethod) {
+        this.rentmethod = rentmethod;
+    }
+
+    public Byte getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(Byte identification) {
+        this.identification = identification;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getPhonenum() {
+        return phonenum;
+    }
+
+    public void setPhonenum(String phonenum) {
+        this.phonenum = phonenum == null ? null : phonenum.trim();
     }
 
     public String getImage1() {

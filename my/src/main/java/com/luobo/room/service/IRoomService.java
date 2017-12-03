@@ -14,4 +14,6 @@ public interface IRoomService {
     room selectByLiid(String liid);
     
     List <room> selectAllRooms();
+    
+    List <room> selectByUserid(long userid);
 }
