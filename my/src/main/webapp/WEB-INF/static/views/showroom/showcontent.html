@@ -67,7 +67,11 @@
     <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>    
 
 <div id="example"> </div>
-<div>
+
+  <div class="WB_cardwrap"  id="lunboimg">
+    <h2>图片</h2>
+    </div>
+    <!--
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
@@ -103,6 +107,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    -->
      <script id="table-template" type="text/x-handlebars-template">
     {{#each student}} 
     <div class="WB_cardwrap">
@@ -196,8 +201,55 @@ $.ajax({
                 mdata.student = mydata;
                 var myTemplate = Handlebars.compile($("#table-template").html());
                 $('#tableList').html(myTemplate(mdata));
+                refreshImages(data);
             }
         });
+
+
+function refreshImages(response){
+    debugger;
+
+    var carouselHTML = '<div id="carousel-example-captions" class="carousel slide"  data-ride="carousel" data-wrap="false">'
+        + '<ol class="carousel-indicators">';
+
+    if(response.image1!=null){
+        carouselHTML=carouselHTML+ '<li data-target="#carousel-example-captions" data-slide-to="0" class="active"/>';
+    }
+    if(response.image2!=null){
+        carouselHTML=carouselHTML+ '<li data-target="#carousel-example-captions" data-slide-to="1"/>'
+    }
+    if(response.image3!=null){
+        carouselHTML=carouselHTML+  '<li data-target="#carousel-example-captions" data-slide-to="2"/>'
+    }
+    carouselHTML=carouselHTML+  '</ol>'
+        + '<div class="carousel-inner" role="listbox">'
+    if(response.image1!=null){
+        carouselHTML=carouselHTML+ '<div class="item active" id="one">'
+        +' <img  style="margin: 0 auto;height: 500px" src="/my/static/'+response.image1+'" data-holder-rendered="true"> '
+        + '<div class="carousel-caption"/>'
+        + '</div>';
+    }
+    if(response.image2!=null){
+        carouselHTML=carouselHTML+ '<div class="item" id="two">'
+        +' <img  style="margin: 0 auto;height: 500px" src="/my/static/'+response.image2+'" data-holder-rendered="true"> '
+        + '<div class="carousel-caption"/>'
+        + '</div>';
+    }
+    if(response.image3!=null){
+        carouselHTML=carouselHTML+ '<div class="item" id="three">'
+        +' <img  style="margin: 0 auto;height: 500px" src="/my/static/'+response.image3+'" data-holder-rendered="true"> '
+        + '<div class="carousel-caption"/>'
+        + '</div>';
+    }
+ 
+    carouselHTML=carouselHTML + '</div>'
+        +'<a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>'
+        +'<a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>'
+        + '</div>';
+        $("#lunboimg").append(carouselHTML);
+        
+    // 在这里面append 一个图片几个即可 
+}
 
 var map = new AMap.Map('container', {
         resizeEnable: true,

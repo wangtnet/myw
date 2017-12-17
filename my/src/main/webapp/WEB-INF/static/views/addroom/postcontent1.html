@@ -262,19 +262,28 @@
     </div>
 
   
-    <div class="WB_cardwrap">
+    <div class="WB_cardwrap"  id="lunboimg">
     <h2>图片</h2>
+ 
+    <!--
     <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
+      <li id="removeli" data-target="#carousel-example-captions" data-slide-to="20" class=""></li>
+     
         <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
         <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+        
       </ol>
       <div class="carousel-inner" role="listbox">
+          <div id="removeimg"  class="item active">
+              <img   style="margin: 0 auto;height: 500px"  data-holder-rendered="true">
+          </div>
+     
         <div class="item active">
           <img   style="margin: 0 auto;height: 500px" src="/my/static/v800x600_ChAFD1nof0iAdHYPAALgGzXRzpc975.JPG" data-holder-rendered="true">
         </div>
-        <div class="item">
+         <div class="item">
          <img  style="margin: 0 auto;height: 500px"  src="/my/static/v800x600_ChAFD1nof0KAWImUAAOY-JAeDXM522.JPG" data-holder-rendered="true">
           <div class="carousel-caption">
             <h3>Second slide label</h3>
@@ -288,6 +297,8 @@
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </div>
         </div>
+      
+
       </div>
       <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -298,6 +309,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    -->
     </div>
 
     <div class="WB_cardwrapmap">
@@ -306,175 +318,6 @@
             <div  id="container" style="top:1660px;left:15px;padding-left:50px; width: 850px;height: 400px" ></div>
         </div>
     </div>
-
 </div>
 
-
-<script>
-    function lunbo(imgpath){
-        $('.carousel-indicators').append("<li data-target='#carousel-example-captions' data-slide-to='3' ></li>");
-        var strHtml= "<div class='item'> <img  style='margin: 0 auto;height: 500px'  src='/my/static/"
-        +imgpath
-        +"' data-holder-rendered='true'><div class='carousel-caption'></div></div>";
-        alert("11");
-        debugger;
-        $('.carousel-inner').append(strHtml);
-    }
-
-    var validate = $("#post1").validate({
-                onfocusout: function(element) { $(element).valid(); },
-                rules:{
-                    courtname:{
-                        required:true
-                    },
-                    areaname:{
-                        required:true,
-                       // email:true
-                    },
-                    /*
-                    password:{
-                        required:true,
-                        rangelength:[3,10]
-                    },*/
-
-                },
-                messages:{
-                    courtname:{
-                        required:"必填选项"
-                    },
-                    areaname:{
-                        required:"必填选项",
-                        //email:"E-Mail格式不正确"
-                    },
-                    /*
-                    password:{
-                        required: "必填选项",
-                        rangelength: "密码最小长度:3, 最大长度:10。"
-                    }*/
-                }
-            });
-     
-
-
-    function GetQueryString(name)
-    {
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if(r!=null)  return  unescape(r[2]); 
-        return null;
-    }
-
-    var map = new AMap.Map('container', {
-        resizeEnable: true,
-        zoom:11,
-        center: [116.40, 39.91]
-    });
-    //$(":submit").click(function(){ submit();});
-
-    var roomid =GetQueryString("liid");
-
-    $(function(){ 
-        $("#liid").text(GetQueryString("liid"));
-        if(GetQueryString("liid")==null) return;
-        $.ajax({
-                url:"/my/room/liid/"+GetQueryString("liid"),
-                    type:"get",
-                    processData:false,
-                    contentType:false,
-                    success:function(data){
-                        debugger;
-                        console.log("over..");
-
-                        //alert(data);
-                        for(var item in data){  
-                          
-                            console.log(item+" "+data[item]);  
-                            var str="#"+item;
-                            $(str).val(data[item]);
-                              
-                        }  
-                    }
-                });
-    });
-
-    function submit(){
-        var obj = $('#post1').serialize();
-    　      $.ajax({
-                url:"/my/room",
-                type:"post",
-                data:obj,
-                processData:false,
-                //contentType:"application/x-www-form-urlencoded",
-                success:function(data){
-                    console.log("over..");
-                    window.location.href ="/my/addroom?liid="+data;
-                }
-            });
-        return false;
-    }
-
-
-    function refreshImages(response){
-        // 在这里面append 一个图片几个即可 
-        var mypics=new Array()
-        var pic1=new Object();
-            
-        pic1.title="描述";
-        pic1.id="newid";
-
-        mypics[0]=pic1;
-
-        //for (var d in data) {
-        //    data[d].url = "mbase.html?pd="+data[d].filmid;
-         //  };
-        var mdata =new Object();
-        mdata.student = mypics;
-        var myTemplate = Handlebars.compile($("#table-template").html());
-        $('#tableList').html(myTemplate(mdata));
-                            
-        $(".roomImage").mouseover(function (event)  
-        { 
-            $(".btn-small").show();
-        }); 
-          
-        $(".roomImage").mouseleave(function(){
-            $(".btn-small").hide();
-        });
-        
-
-
-       var imgurl="url(/my/static/"+response+")";
-        $("#newid").css("background",imgurl);
-        $("#newid").css("background-size","100% 100%");
-       //to thi thi式子
-       //后端 已经spring 原理
-    }
-    var d = new Date();
-    var t = d.getTime();
-
-    $('#one-specific-file').ajaxfileupload({
-            action: '/my/room/upload?roomid='+roomid+'&t='+t,
-            onComplete: function(response){
-                        //alert(response);
-                        //refreshImages(response);
-                        debugger;
-                        lunbo(response);
-                    }
-    });
-
-
-    function savePage(){
-        var flag = $("#post1").valid();
-        if(!flag){
-            //没有通过验证
-            return;
-        }
-        alert("savePage");
-        submit();
-    }
-
-    function addImage(){
-        alert("addImage");
-        $("#uploadclick").trigger("click");
-    }
-</script>
+<script type="text/javascript" src="static/views/addroom/postcontent1.js"></script>

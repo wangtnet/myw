@@ -88,19 +88,54 @@ public class roomController {
 	}
 	
 
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@RequestMapping(value = "/upload/{roomid}", method = RequestMethod.POST)
 	@ResponseBody 
     public String upload(
            @RequestParam("one-specific-file") CommonsMultipartFile upfile,
-           HttpServletRequest req,Integer rommid) throws IOException {
+           HttpServletRequest req, @PathVariable("roomid") String rommid) throws IOException {
        // |获取在Web服务器上的 绝对路径
        System.out.println("come-->roomid="+rommid);
+       room room=roomService.selectByLiid(rommid);
+       if(room==null)
+    	   return "wrong";
+       
        String path = req.getRealPath("/WEB-INF/static/");
+       Integer imageNum=1;
+       
+       //这种的反射 to thi tha
+       if(room.getImage1()==null){
+    	   imageNum=1;
+    	   room.setImage1(rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename());
+       }
+       else if(room.getImage2()==null){
+    	   imageNum=2;
+    	   room.setImage2(rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename());
+       }
+       else if(room.getImage3()==null){
+    	   imageNum=3;
+    	   room.setImage3(rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename());
+       }
+       else if(room.getImage4()==null){
+    	   imageNum=4;
+    	   room.setImage4(rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename());
+       }
+       else if(room.getImage5()==null){
+    	   imageNum=5;
+    	   room.setImage5(rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename());
+       }
+       else {
+    	   return "imageout5";
+       }
+    	   
+       
+       String imageName =rommid+"_"+imageNum.toString()+"_"+upfile.getOriginalFilename();
        System.out.println(path);
+       roomService.updateRoom(room);
        // |获取输入流
        InputStream is = upfile.getInputStream();
        // |文件输出流
-       OutputStream os = new FileOutputStream(new File(path,upfile.getOriginalFilename()));
+       //OutputStream os = new FileOutputStream(new File(path,upfile.getOriginalFilename()));
+       OutputStream os = new FileOutputStream(new File(path,imageName));
        System.out.println("come0");
        // |循环写入
        int length = 0;
@@ -112,7 +147,8 @@ public class roomController {
        is.close();
        os.close();
        System.out.println("come2");
-       return upfile.getOriginalFilename();
+       
+       return imageName;
    }
 }
 
